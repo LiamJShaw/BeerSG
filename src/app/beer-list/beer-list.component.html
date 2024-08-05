@@ -1,0 +1,14 @@
+<ul>
+  <li>
+    @for (beer of beers; track beer.name) {
+        {{ beer.name }}: {{ beer.count }}
+        <button (click)="incrementBeer(beer)">+</button>
+        <button (click)="decrementBeer(beer)">-</button>
+    }
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="newBeerName" placeholder="Add a beer" />
+<button (click)="addBeer()">Add Beer</button>
+
+<button (click)="endDay()">End Day</button>
