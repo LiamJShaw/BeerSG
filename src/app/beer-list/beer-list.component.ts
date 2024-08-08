@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Beer } from '../interfaces/beer';
 import { FormsModule } from '@angular/forms';
 import { BeerService } from '../beer.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-beer-list',
   standalone: true,
   imports: [
+    RouterLink,
     FormsModule
   ],
   templateUrl: './beer-list.component.html',

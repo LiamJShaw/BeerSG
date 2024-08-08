@@ -41,8 +41,15 @@
                     <button class="increment-button" (click)="incrementBeer(beer)">+</button>
                 </div>
             </li>
+        } @empty {
+            <div class="instruction">
+                <p>No beers found</p>
+                <button routerLink="/beers">Add Beers</button>
+            </div>
         }
     </ul>
 
-    <button class="end-session-button" (click)="endSession()">End Session</button>
+    @if (session.length > 0) {
+        <button class="end-session-button" (click)="endSession()">End Session</button>
+    }
 </div>
