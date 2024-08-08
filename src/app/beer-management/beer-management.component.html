@@ -1,1 +1,19 @@
-<p>beer-management works!</p>
+<div class="container">
+    <ul>
+        @for (beerName of beers; track beerName) {
+            <li>
+                <div class="beer-name">
+                    {{ beerName }}
+                </div>
+    
+                <button class="remove-button" (click)="removeBeer(beerName)">X</button>
+            </li>
+        }
+    </ul>
+    
+    <div class="add-beer">
+        <input type="text" [(ngModel)]="beerName" placeholder="New beer name..." />
+        <button (click)="addBeer()">Add</button>
+    </div>
+    
+</div>

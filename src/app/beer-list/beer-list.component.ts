@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Beer } from '../interfaces/beer';
 import { FormsModule } from '@angular/forms';
+import { BeerService } from '../beer.service';
 
 @Component({
   selector: 'app-beer-list',
@@ -11,63 +12,43 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './beer-list.component.html',
   styleUrl: './beer-list.component.css'
 })
-export class BeerListComponent implements OnInit {
-  beers: Beer[] = [];
-  newBeerName: string = '';
+export class BeerListComponent {
+
+  session: any[] = [];
+
+  constructor(private beerService: BeerService) {}
 
   ngOnInit(): void {
-    this.loadBeers();
+    this.loadSession();
   }
 
-  addBeer(): void {
-    if (this.newBeerName.trim()) {
-      this.beers.push({ name: this.newBeerName, count: 0 });
-      this.newBeerName = '';
-      this.saveBeers();
+  loadSession(): void {
+    const session = this.beerService.getSession();
+
+    if (session.length === 0) {
+      this.beerService.startNewSession();
+      this.session = this.beerService.getSession();
+    } else {
+      this.session = session;
     }
   }
 
-  incrementBeer(beer: Beer): void {
+  incrementBeer(beer: any): void {
     beer.count++;
-    this.saveBeers();
+    this.beerService.updateSession(this.session);
   }
 
-  decrementBeer(beer: Beer): void {
+  decrementBeer(beer: any): void {
     if (beer.count > 0) {
       beer.count--;
-      this.saveBeers();
+      this.beerService.updateSession(this.session);
     }
   }
 
-  endDay(): void {
-    this.saveDaySummary();
-    this.beers.forEach(beer => beer.count = 0);
-    this.saveBeers();
-  }
-
-  saveBeers(): void {
-    localStorage.setItem('beers', JSON.stringify(this.beers));
-  }
-
-  loadBeers(): void {
-    const storedBeers = localStorage.getItem('beers');
-    if (storedBeers) {
-      this.beers = JSON.parse(storedBeers);
+  endSession(): void {
+    if (window.confirm('Are you sure you want to end the session?')) {
+      this.beerService.endSession();
+      this.loadSession();
     }
-  }
-
-  saveDaySummary(): void {
-    const daySummary = {
-      date: new Date().toLocaleDateString(),
-      beers: this.beers.map(beer => ({ ...beer }))
-    };
-    const summaries = this.loadSummaries();
-    summaries.push(daySummary);
-    localStorage.setItem('summaries', JSON.stringify(summaries));
-  }
-
-  loadSummaries(): any[] {
-    const storedSummaries = localStorage.getItem('summaries');
-    return storedSummaries ? JSON.parse(storedSummaries) : [];
   }
 }

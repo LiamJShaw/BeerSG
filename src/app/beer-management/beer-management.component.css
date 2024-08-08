@@ -1,0 +1,68 @@
+.container {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: scroll;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+li:nth-child(odd) {
+    background-color: #181818;
+}
+
+li:nth-child(even) {
+    background-color: #202020;
+}
+
+.add-beer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0.5rem;
+}
+
+.add-beer input {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    padding: 1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.add-beer input:focus {
+    outline: none;
+}
+
+.add-beer > button {
+    padding: 0 1rem;
+    background-color: #ce773b;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    white-space: nowrap;
+}
+
+.remove-button {
+    padding: 0.5rem 1rem;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    white-space: nowrap;
+}

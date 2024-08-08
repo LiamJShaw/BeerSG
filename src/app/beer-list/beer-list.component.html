@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <ul>
         @for (beer of beers; track beer.name) {
             <li>
@@ -22,6 +22,27 @@
         <input type="text" [(ngModel)]="newBeerName" placeholder="New beer name..." />
         <button (click)="addBeer()">Add</button>
     </div>
-    
-    <!-- <button class="end-day-button" (click)="endDay()">End Day</button> -->
+</div> -->
+
+<div class="container">
+    <ul>
+        @for (beer of session; track beer) {
+            <li>
+                <div class="beer-count">
+                    {{ beer.count }}
+                </div>
+                
+                <div class="beer-name">
+                    {{ beer.name }}
+                </div>
+
+                <div class="count-buttons">
+                    <button class="decrement-button"  (click)="decrementBeer(beer)">-</button>
+                    <button class="increment-button" (click)="incrementBeer(beer)">+</button>
+                </div>
+            </li>
+        }
+    </ul>
+
+    <button class="end-session-button" (click)="endSession()">End Session</button>
 </div>

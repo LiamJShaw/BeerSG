@@ -1,1 +1,23 @@
-<p>summary works!</p>
+<div class="cards">
+    @for (session of sessions; track session) {
+        <div class="session-card">
+            <div class="title">
+                <h3>{{ session.timestamp | date:'short' }}</h3>
+            </div>
+    
+            <ul>
+                @for (beer of session.beers; track beer) {
+                    <li>
+                        <div class="name">
+                            {{ beer.name }} 
+                        </div>
+
+                        <div class="count">
+                            {{ beer.count }}
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>

@@ -1,12 +1,15 @@
 .container {
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
 }
 
 ul {
     list-style-type: none;
-    /* margin: 1rem; */
+    padding: 0;
+    margin: 0;
 }
 
 li {
@@ -14,8 +17,6 @@ li {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    /* margin: 1rem; */
-
 }
 
 li:nth-child(odd) {
@@ -40,7 +41,9 @@ li:nth-child(even) {
     border: none;
     border-radius: 10px;
     font-weight: 900;
+    font-size: larger;
     color: white;
+    padding: 0.5rem 1rem;
 }
 
 .increment-button {
@@ -51,14 +54,10 @@ li:nth-child(even) {
     background-color: #000000;
 }
 
-.count-buttons button {
-    padding: 0.5rem 1rem;
-}
-
 .add-beer {
     display: flex;
     justify-content: space-between;
-    margin: 1rem;
+    margin: 0 0.5rem;
 }
 
 .add-beer input {
@@ -68,17 +67,20 @@ li:nth-child(even) {
     border-radius: 10px 0 0 10px;
     padding: 1rem;
     flex: 1;
+    min-width: 0;
 }
 
 .add-beer input:focus {
     outline: none;
 }
 
-.add-beer > button {
-    padding: 0 1rem;
+.end-session-button {
+    padding: 0.5rem 1rem;
+    margin: 2rem;
     background-color: #ce773b;
     color: white;
     font-weight: 600;
     border: none;
-    border-radius: 0 10px 10px 0;
+    border-radius: 10px;
+    white-space: nowrap;
 }

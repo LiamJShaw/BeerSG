@@ -1,0 +1,59 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.session-card {
+    background-color: #242424;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+}
+
+.title {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: small;
+}
+
+.session-card h3 {
+    font-size: medium;
+    margin: 0;
+}
+
+.session-card ul {
+    list-style-type: none;
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.session-card ul li {
+    font-size: 1em;
+    padding: 10px 0;
+    color: #ffffff;
+    border-bottom: 1px solid #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-card ul li:last-child {
+    border-bottom: none;
+}
+
+.name {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.count {
+    font-weight: bold;
+}
