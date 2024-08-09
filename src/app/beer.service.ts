@@ -22,6 +22,11 @@ export class BeerService {
     if (!beers.includes(name)) {
       beers.push(name);
       localStorage.setItem(this.beerNamesKey, JSON.stringify(beers));
+
+      // Update the current session with the new beer
+      const currentSession = this.getSession();
+      currentSession.push({ name, count: 0 });
+      this.updateSession(currentSession);
     }
   }
 
